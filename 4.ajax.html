@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			height: 200px;
+		}
+		.container{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		button{
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>AJAX</h1>
+
+	<div class="container">
+
+
+	<script>
+		//XHR
+		const xHR = new XMLHttpRequest();
+		console.log(xHR)
+		xHR.onreadystatechange = ()=>{
+			//console.log(`Ready state is...${xHR.readyState}`)
+			if(xHR.readyState === 4 && xHR.status === 200){
+				console.log(xHR.responseText)
+			}else{
+				console.log('There was a problem')
+			}
+		}
+		xHR.open('GET','https://api.github.com/zen' )
+		xHR.send()
+
+		
+	</script>
+</body>
+</html>

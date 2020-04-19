@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#bitcoin{
+			color: green
+		}
+	
+
+	</style>
+</head>
+<body>
+	<h1>Bitcoin Current Price is :$<span id="bitcoin"></span></h1>
+
+	<button id="btn">Refresh Data</button>
+
+	<script>
+		const btn = document.querySelector('#btn');
+		const bitcoin = document.querySelector('#bitcoin');
+
+		btn.addEventListener('click', ()=>{
+			fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+				.then((response)=>{
+				console.log(response)
+				
+				return response.json()
+				}).then((data)=>{
+				
+				return bitcoin.innerHTML = data.bpi.USD.rate;
+				})
+			})
+
+		
+
+
+
+	</script>
+</body>
+</html>

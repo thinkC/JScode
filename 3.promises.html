@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Promises</h1>
+
+	<script>
+		//handling successful promis
+		// const p1 = new Promise((resolve, reject)=>{
+		// 	resolve([1,2,3,4])
+		// })
+
+		// p1.then((arr)=>{
+		// 	console.log('Promise p1 resolved with data ', arr)
+		// })
+
+//******************************************************
+		//handling unsuccessfull promise
+		// const p1 = new Promise ((resolve, reject)=>{
+		// 	reject('ERROR')
+		// });
+
+		// p1.then((data)=>{
+		// 	console.log('Promise p1 resolved with data :' , data)
+		// }).catch((data)=>{
+		// 	console.log('Promise p1 was rejected with data ' , data)
+		// })
+
+//******************************************************
+		//Promise with randomly occurring error
+		// const p1 = new Promise((resolve, reject)=>{
+		// 	let num = Math.random();
+		// 	num > 0.5 ? resolve(num) : reject(num)
+		// });
+		// p1.then((result)=>{
+		// 	console.log('Success:', result)
+		// }).catch((error)=>{
+		// 	console.log("Error:", error)
+		// })
+
+		//******************************************************
+
+		//Wrap setTimeout wit Promise
+		// const promise = new Promise((resolve, reject)=>{
+		// 	setTimeout(()=>{
+		// 		let randInt = Math.floor(Math.random()* 10)
+		// 		randInt > 5 ? resolve(randInt) : reject(randInt)
+		// 	},4000)
+		// });
+
+		// promise.then((data)=>{
+		// 	console.log('success:', data)
+		// }).catch((error)=>{
+		// 	console.log('Error Msg', error)
+		// })
+
+		//******************************************************
+
+		//Nested Async Callbacks
+		// let counter = 0;
+		// setTimeout(()=>{
+		// 	counter++
+		// 	console.log('Couunter:', counter);
+		// 	setTimeout(()=>{
+		// 		counter++;
+		// 		console.log('Couunter:', counter);
+		// 		setTimeout(()=>{
+		// 			counter++;
+		// 			console.log('Couunter:', counter);
+		// 		},3000)
+		// 	},2000)
+		// },1000)
+
+
+		//******************************************************
+		//Returning a Promise: Promise Chaining
+
+		// const promise = new Promise((resolve, reject)=>{
+		// 	setTimeout(()=>{
+		// 		let randInt = Math.floor(Math.random()* 10);
+		// 		resolve(randInt)
+		// 	},2000)
+		// });
+
+		// promise.then((data)=>{
+		// 	console.log(`Random Int passed to resolve: ${data}`);
+		// 	return new Promise((resolve, reject)=>{
+		// 		setTimeout(()=>{
+		// 			resolve(Math.floor(Math.random()* 10))
+		// 		},3000)
+		// 	})
+		// }).then((data)=>{
+		// 	console.log(`Second random int  passed to resolve ${data}`)
+		// })
+
+
+//******************************************************
+//my own
+		// const promise = new Promise((resolve, reject)=>{
+		// 	setTimeout(()=>{
+		// 		const arr = ['JavaScript', 'Ruby', 'PHP', 'Python'];
+		// 		resolve(arr)
+		// 	},2000)
+		// })
+		// promise.then((data)=>{
+		// 	console.log(data);
+		// 	return new Promise((resolve,reject)=>{
+		// 		setTimeout(()=>{
+		// 			console.log(data)
+		// 			resolve(data)
+			
+			
+		// 			//resolve(data.push('Swift'))
+		// 		},2000)
+		// 	})
+		// }).then((data1)=>{
+		// 	data1.forEach((item)=>{
+		// 		console.log(item)
+		// 	})
+			
+			
+		// })
+
+		//******************************************************
+
+// 		let counter = 0;
+// 		function incCounter(){
+// 			counter++;
+// 			console.log('counter:', counter)
+// 		}
+
+// 		function runLater(callback, timeInMs){
+// 			let p = new Promise((resolve, reject)=>{
+// 				setTimeout(()=>{
+// 					let res = callback();
+// 					resolve(res)
+// 				}, timeInMs)
+// 			});
+// 			return p
+// 		}
+
+
+// runLater(incCounter, 1000).then(()=>{
+// 	return runLater(incCounter, 2000)
+// }).then(()=>{
+// 	return runLater(incCounter, 3000)
+// }).then(()=>{
+// 	//final not neccessary
+// })
+
+
+
+
+	</script>
+
+</body>
+
+</html>

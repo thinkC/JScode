@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	callback functions
+
+	<script>
+		// function callback(){
+		// 	console.log('Coming from call back')
+		// }
+
+		// function higherOrder(fn){
+		// 	console.log('about to call callback');
+		// 	fn(); //call back is invoked
+		// 	console.log('callback has been invoked')
+		// }
+
+		// higherOrder(callback)
+
+		//duplicate codes without callback
+		// function sendMessageConsole(message){
+		// 	console.log(message)
+		// }
+
+		// function sendMessageAlert(message){
+		// 	alert(message)
+		// }
+		// function sendMessageConfirm(message){
+		// 	return confirm(message)
+		// }
+		// sendMessageAlert('Lots of duplication')
+
+		// function sendMessage(message, callback){
+		// 	return callback(message)
+		// }
+
+		// sendMessage('message for console', console.log)
+
+		// sendMessage('message for alert', alert);
+
+		// var answer = sendMessage('are you sure??', confirm)
+
+
+
+		//callback with function declaration
+
+		// function greet(name, formatter){
+		// 	return 'Hello ' + formatter(name)
+		// }
+
+		// function toUpperCaseName(name){
+		// 	return name.toUpperCase();
+		// }
+
+		// const capitalizeName = greet('Tunde', toUpperCaseName);
+
+		// console.log(capitalizeName)
+//******************************************************
+
+		//callback with anonymous functions
+
+		function greet(name, formatter){
+			return 'Hello ' + formatter(name)
+		}
+
+		greet('Tunde',function(name){
+			return name.toUpperCase()
+		})
+
+		// greet('Tunde', (name)=>{
+		// 	return name + "!!!";
+		// })
+
+let capitalize1 = greet('Tunde', ()=>{function()})
+console.log(capitalize1)
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

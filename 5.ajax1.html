@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			height: 200px;
+		}
+		.container{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		button{
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>AJAX</h1>
+
+	<div class="container">
+		<h1>Welcome to Random Dog Pictures</h1>
+		<img
+		id="photo"
+		src="https://images.dog.ceo/breeds/spaniel-brittany/n02101388_4002.jpg"/>
+		<button id="btn" >Get Random Dog</button>
+
+	<script>
+
+		const btn = document.querySelector('#btn');
+		let img = document.querySelector('#photo');
+		btn.addEventListener('click', ()=>{
+			const xHR = new XMLHttpRequest();
+			xHR.onreadystatechange = ()=>{
+				if(xHR.readyState === 4 && xHR.status === 200){
+					let data = JSON.parse(xHR.responseText).message
+					console.log(data)
+					
+					img.src = data;
+				}
+			}
+			const url = 'https://dog.ceo/api/breeds/image/random';
+			xHR.open('GET',url);
+			xHR.send()
+		})
+		console.log(btn)
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Settime out - Setinterval</h1>
+
+
+	<script>
+		// function callback(){
+		// 	console.log('callback function')
+		// }
+
+		// let delay = 3000;
+		// setTimeout(callback, delay)
+
+		// function addNumAfter8secs(a,b){
+		// 	let total = a + b;
+		// 	console.log(total)
+		// 	return total
+		// }
+
+		// let delay = 8000;
+
+		// setTimeout(()=>{addNumAfter8secs(4, 12)}, delay)
+//******************************************************
+		// function listArrayin5sec(arr){
+		// 	arr.forEach((item)=>{
+		// 		console.log(item)
+		// 	})
+		// }
+
+		// setTimeout(()=>{listArrayin5sec([2,4,6,8,10])},5000)
+
+		// const timeId = setTimeout(()=>{
+		// 	console.log('This function runs in 30 secs')
+		// },30000)
+
+		// setTimeout(()=>{
+		// 	console.log('cancelling the 1st settimeout', timeId)
+		// 	clearTimeout(timeId)
+		// },2000)
+//******************************************************
+
+		//setinterval
+		// function callback(){
+		// 	console.log('callback is called continously')
+		// }
+
+		// const repeat = 3000;
+		// setInterval(callback, repeat)
+		//******************************************************
+
+		let num = 0;
+		const intervalId = setInterval(()=>{
+			num++;
+			console.log('num:', num);
+			if(num === 3){
+				clearInterval(intervalId)
+				console.log('timeout reached in ' + num + 'secs')
+			}
+		},1000)
+	</script>
+</body>
+</html>
