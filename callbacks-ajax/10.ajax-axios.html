@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>AJAX - Axios</h1>
+
+    <h3 id="question"></h3>
+
+    <button id="btn">As Question</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        const btn = document.querySelector('#btn');
+        const question = document.querySelector('#question');
+        //console.log(question)
+        btn.addEventListener('click', () => {
+            axios.get('https://opentdb.com/api.php?amount=1')
+                .then((res) => {
+                    //console.log(res.data.results[0].question)
+                    console.log(res)
+                    let data = res.data.results[0].question
+                    console.log(data);
+                    question.innerText = data;
+                }).catch(handleError)
+
+            function handleError(err) {
+                if (err.response) {
+                    console.log('Pronlem with response', err.response.status)
+                } else if (err.request) {
+                    console.log('Problem with request')
+                } else {
+                    console.log('Error', err.message)
+                }
+            }
+        })
+
+        //const getQuestion = () => {
+
+        // axios.get('https://opentdb.com/api.php?amount=1')
+        //     .then((res) => {
+        //         //console.log(res.data.results[0].question)
+        //         let data = res.data.results[0].question
+        //         console.log(data)
+        //     }).catch(handleError)
+
+        // function handleError(err) {
+        //     if (err.response) {
+        //         console.log('Pronlem with response', err.response.status)
+        //     } else if (err.request) {
+        //         console.log('Problem with request')
+        //     } else {
+        //         console.log('Error', err.message)
+        //     }
+        // }
+        //}
+
+
+
+    </script>
+
+</body>
+
+</html>

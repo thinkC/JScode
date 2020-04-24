@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Handling Fetch Error</h1>
+    <button id="btn">Click Me To Make Bad Request</button>
+    <script>
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(handleError)
+                .then((res) => {
+                    console.log('everything is fine')
+                    console.log(res)
+                }).catch((error) => {
+                    console.log('there is a problem')
+                    console.log(error)
+                })
+        })
+
+        function handleError(res) {
+            if (!res.ok) {
+                //console.log('error with response status')
+                throw Error(res.status)
+            }
+            return res
+        }
+    </script>
+</body>
+
+</html>

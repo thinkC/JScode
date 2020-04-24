@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Call | Apply | Bind</h1>
+
+
+    <script>
+        const person = {
+            firstname: 'Tunde',
+            sayHi: function () {
+                return 'Hi ' + this.firstname
+            },
+            determineContext: function () {
+                return this === this
+            },
+            javascript: {
+                sayHello: function () {
+                    return 'Hello ' + this.firstname
+                }
+            }
+        }
+        console.log(person.javascript.sayHello()) //show Hello Undefined
+        console.log(person.javascript.sayHello.call(person))
+        console.log(person.determineContext.call(person))
+
+        //***************************************
+        // const colt = {
+        //     firstname: 'Colt',
+        //     sayHi: function () {
+        //         return 'Hi ' + this.firstname
+        //     }
+        // }
+
+        // const ellie = {
+        //     firstname: 'Ellie'
+        // }
+
+        // console.log(colt.sayHi.call(ellie))
+        //***************************************
+
+        // function sayHi() {
+        //     return 'Hi ' + this.firstname
+        // }
+
+        // const colt = {
+        //     firstname: 'Colt'
+        // }
+
+        // const ellie = {
+        //     firstname: 'Ellie'
+        // }
+
+        // console.log(sayHi.call(colt))
+        // console.log(sayHi.call(ellie))
+
+        //******************************
+
+        function addNumbers(a, b, c, d) {
+            return this.firstname + ' just calculated ' + (a + b + c + d)
+        }
+
+        const colt = {
+            firstname: 'Colt'
+        }
+
+        const ellie = {
+            firstname: 'Ellie'
+        }
+
+        console.log('call: ' + addNumbers.call(ellie, 1, 2, 3, 4))
+        console.log('apply: ' + addNumbers.apply(colt, [1, 2, 3, 4]))
+
+        //***********************************
+        const num = [2, 4, 6, 10];
+        console.log(Math.max(num)) // this will not work as max() will not allow array
+
+        console.log(Math.max(...num)) // this will work with spread
+        //OR
+
+        console.log(Math.max.apply(this, num)) // apply spreads the numbers likd the spread operator
+
+        //another example
+
+        function sumValues(a, b, c, d, e) {
+            return a + b + c + d + e
+        }
+
+        const values = [4, 5, 3, 1, 6]
+        console.log(sumValues(...values))
+        console.log(sumValues.apply(this, values))
+
+
+        //****************************
+        function addNumbers1(a, b, c, d) {
+            return this.firstname + ' just calculated ' + (a + b + c + d)
+        }
+
+        const ellie1 = {
+            firstname: 'Ellie'
+        }
+
+        //let ellieCal = addNumbers1.bind(ellie1, 1, 2, 3, 4)
+        //console.log(ellieCal())
+        let ellieCal = addNumbers1.bind(ellie1, 1, 2)
+        console.log(ellieCal(3, 4))
+
+        //*********************************
+        const banke = {
+            firstname: 'Banke',
+            sayHi: function () {
+                setTimeout(function () {
+                    console.log('Hi ' + this.firstname)
+                }.bind(this), 2000) // if you remove .bin, you get Hi Undefined
+            }
+        }
+        banke.sayHi()
+
+        //arrow function solves this issue
+        const tunde = {
+            firstname: 'Tunde',
+            sayHi: function () {
+                setTimeout(() => {
+                    console.log('Hi ' + this.firstname)
+                }, 5000)
+            }
+        }
+
+        tunde.sayHi()
+
+
+
+
+
+    </script>
+</body>
+
+</html>

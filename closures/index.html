@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Closures</h1>
+
+
+    <script>
+        //example 1
+        function outer() {
+            let start = 'Closures are ';
+            return function inner() {
+                console.log(start + 'awesome')
+                return start + 'awesome'
+            }
+        }
+        outer()();
+
+
+        //example 2
+        function add(a) {
+            return function add1(b) {
+
+                return a + b
+            }
+        }
+        const addNum = add(2)(5);
+        console.log(addNum)
+
+        //example 3
+        function counter() {
+            let count = 0;
+            return function inner() {
+                count++
+                return count;
+            }
+        }
+
+        const counterNum = counter();
+        console.log('counter 1:', counterNum())
+        console.log('counter 1:', counterNum())
+        const counterNum2 = counter();
+        console.log('counter 2:', counterNum2())
+
+        //count variable cannot be accessed from outside
+
+        //example 4
+        function classRoom() {
+            let instructors = ['Ellie', 'Colt'];
+            return {
+                getInstructors: function () {
+                    return instructors;
+                },
+                addInstructors: function (instructor) {
+                    instructors.push(instructor)
+                    return instructors
+                }
+            }
+        }
+
+        const first = classRoom();
+        console.log(first.getInstructors());
+        console.log(first.addInstructors('Tunde'));
+    </script>
+</body>
+
+</html>
